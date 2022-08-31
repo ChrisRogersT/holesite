@@ -20,8 +20,14 @@ import ComponentWithSlotProps from "./ComponentWithSlotProps.svelte";
         </div>
         <div>
             <h3>Component with slot props</h3>
-            <ComponentWithSlotProps>
-                
+            <ComponentWithSlotProps let:hovering={active}>
+                <div class:active>
+                    {#if active}
+                        <p>I am being hovered upon.</p>
+                    {:else}
+                        <p>Hover over me!</p>
+                    {/if}
+                </div>
             </ComponentWithSlotProps>
         </div>
         <div style:grid-row='2 / 5' style:grid-column='2 / 3'>
@@ -43,5 +49,16 @@ import ComponentWithSlotProps from "./ComponentWithSlotProps.svelte";
         column-gap: 12px;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    @keyframes active-flash {
+        from {background-color: lightyellow;}
+        to {background-color: lightslategray}
+    }
+    .active {
+        animation-name: active-flash;
+        animation-duration: 2s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
     }
 </style>
