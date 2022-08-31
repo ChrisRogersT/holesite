@@ -4,6 +4,7 @@
     import DisplayLogic from "$lib/tutorial/DisplayLogic.svelte";
     import Props from "$lib/tutorial/props/Props.svelte";
     import ReactiveStatements from "$lib/tutorial/ReactiveStatements.svelte";
+    import Server from "$lib/tutorial/Server.svelte";
     import Slots from "$lib/tutorial/slots/Slots.svelte";
     import Stores from "$lib/tutorial/stores/Stores.svelte";
 </script>
@@ -15,6 +16,7 @@
     <DisplayLogic />
     <Props />
     <ReactiveStatements/>
+    <Server />
     <Slots />
     <Stores />
 </div>

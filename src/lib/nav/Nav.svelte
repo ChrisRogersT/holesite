@@ -1,4 +1,7 @@
-<div>Nav Bar</div>
+<div>
+    <a href="/">BitWiki</a>
+    <a href="/tutorial">tutorial</a>
+</div>
 
 <style>
     div{
