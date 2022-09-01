@@ -14,7 +14,6 @@ locals {
 }
 
 provider "google" {
-  credentials = var.GOOGLE_CREDENTIALS
   project = local.project_id
   region  = local.region
   zone    = local.zone
