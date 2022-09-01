@@ -1,38 +1,22 @@
-# create-svelte
+# Bit Wiki svelte.js implementation
+## tooling
+*Required*
+- node for running and compiling svelte/svelte-kit
+*Optional*
+- nvm for installing and managing node versions
+- make for running make file commands
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## suggested setup
+- ensure make is available on your system (can run `make --version`)
+- - if not installed and you are on a linux machine run `sudo apt install make`
+- run `make initnvm`
+- run `make initnode`
+- run `make install`
+- run `make run`
+- local dev server should now be running
 
-## Creating a project
+## tutorials
+I've added examples of the basics for svelte and svelte-kit under the tutorial route. However it isn't exhaustive and doesn't have the explanations the actual tutorials do. See [svelte](https://svelte.dev/tutorial/basics) and [svelte-kit](https://kit.svelte.dev/docs/introduction). 
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## deployment
+This project is using vercel and its built in git integrations to deploy. In the github UI there should be elements linking to the "production" url. Any commit to origin/main will cause a deployment to update. Vercel will also create "testing" deployments of other branches that are created. 
