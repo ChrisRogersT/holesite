@@ -5,3 +5,5 @@ BitWiki-svelte is a svelte.js implementation of a bitwiki front end. It is deplo
 
 ## Terraform
 State hosted by [terraform cloud](https://app.terraform.io/), org managed by Chris's account TBD on if there is a need for a team managed org. Plans and Applies are also managed by the same terraform cloud plus integration with github to watch the terraform directory/main branch/PRs to run Plans and Applies.
+
+Pulumi looks like a good alternative if terraform has some cost limitation.
