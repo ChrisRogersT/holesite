@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"vercel": "pwd && ls -al && npm run add_google_credentials_file && npm run build",
+		"vercel": "pwd && ls -al && npm run add_google_credentials_file && svelte-kit sync && npm run build",
 		"add_google_credentials_file": "node buildScripts/addGoogleKeyFile.cjs",
 		"dev": "vite dev",
 		"build": "vite build",
