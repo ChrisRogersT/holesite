@@ -1,6 +1,7 @@
-import { File, Storage } from "@google-cloud/storage";
+import { type File, Storage } from "@google-cloud/storage";
 import { GOOGLE_CREDENTIALS_KEYFILE } from '$env/static/private';
 import fs from 'fs';
+import fsPromises from 'fs/promises';
 import map from "lodash/map";
 import type { Bit } from "$lib/bit/type";
 
@@ -38,6 +39,11 @@ export const getObject = async (id: string)=>{
 }
 
 export const listFiles = async (): Promise<string[]>=>{
+    
+    console.log('keyfilename', keyFilename);
+    console.log('process.env.GOOGLE_CREDENTIALS', process.env.GOOGLE_CREDENTIALS);
+    const file = await fsPromises.readFile(keyFilename);
+    console.log(file.toString());
     const [files] = await bit_wiki_bucket.getFiles();
     const fileNames = map(files, (file:File)=>file.name)
     return fileNames;
