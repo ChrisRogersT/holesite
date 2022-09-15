@@ -3,9 +3,11 @@ import { GOOGLE_CREDENTIALS_KEYFILE } from '$env/static/private';
 import map from "lodash/map";
 import type { Bit } from "$lib/bit/type";
 
+
+const keyFilename = `${process.cwd()}/${GOOGLE_CREDENTIALS_KEYFILE}`;
 const storage = new Storage({
     projectId: 'holesite',
-    keyFilename: GOOGLE_CREDENTIALS_KEYFILE
+    keyFilename
 })
 
 const bit_wiki_bucket = storage.bucket('bit_wiki');
