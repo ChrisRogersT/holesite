@@ -1,10 +1,16 @@
 import { File, Storage } from "@google-cloud/storage";
 import { GOOGLE_CREDENTIALS_KEYFILE } from '$env/static/private';
+import fs from 'fs';
 import map from "lodash/map";
 import type { Bit } from "$lib/bit/type";
 
-
-const keyFilename = `${process.cwd()}/${GOOGLE_CREDENTIALS_KEYFILE}`;
+const keyFilename = `${GOOGLE_CREDENTIALS_KEYFILE}`;
+if(!process.env.GOOGLE_CREDENTIALS){
+    throw new Error('process.env.GOOGLE_CREDENTIALS needs to be set');
+} 
+fs.writeFile(keyFilename, process.env.GOOGLE_CREDENTIALS, (err)=>{
+    if(err) console.log(err);
+})
 const storage = new Storage({
     projectId: 'holesite',
     keyFilename

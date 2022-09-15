@@ -6,7 +6,6 @@ initnode: ~/.nvm
 
 install:
 	npm install
-	npm run add_google_credentials_file
 
 clean:
 	rm -rf node_modules
