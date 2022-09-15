@@ -1,11 +1,11 @@
 import { File, Storage } from "@google-cloud/storage";
-import { GOOGLE_CREDENTIALS } from '$env/static/private';
+import { GOOGLE_CREDENTIALS_KEYFILE } from '$env/static/private';
 import map from "lodash/map";
 import type { Bit } from "$lib/bit/type";
 
 const storage = new Storage({
     projectId: 'holesite',
-    keyFilename: GOOGLE_CREDENTIALS
+    keyFilename: GOOGLE_CREDENTIALS_KEYFILE
 })
 
 const bit_wiki_bucket = storage.bucket('bit_wiki');

@@ -3,6 +3,8 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
+		"vercel": "npm run add_google_credentials_file && npm run build",
+		"add_google_credentials_file": "node buildScripts/addGoogleKeyFile.cjs",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
