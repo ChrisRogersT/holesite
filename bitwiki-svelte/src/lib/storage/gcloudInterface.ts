@@ -1,17 +1,13 @@
 import { type File, Storage } from "@google-cloud/storage";
-import { GOOGLE_CREDENTIALS_KEYFILE } from '$env/static/private';
-import fsPromises from 'fs/promises';
 import map from "lodash/map";
 import type { Bit } from "$lib/bit/type";
 
-const keyFilename = `${GOOGLE_CREDENTIALS_KEYFILE}`;
 if(!process.env.GOOGLE_CREDENTIALS){
     throw new Error('process.env.GOOGLE_CREDENTIALS needs to be set');
 } 
-await fsPromises.writeFile(keyFilename, process.env.GOOGLE_CREDENTIALS)
 const storage = new Storage({
     projectId: 'holesite',
-    keyFilename
+    credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS)
 })
 
 const bit_wiki_bucket = storage.bucket('bit_wiki');
@@ -36,11 +32,6 @@ export const getObject = async (id: string)=>{
 }
 
 export const listFiles = async (): Promise<string[]>=>{
-    
-    console.log('keyfilename', keyFilename);
-    console.log('process.env.GOOGLE_CREDENTIALS', process.env.GOOGLE_CREDENTIALS);
-    const file = await fsPromises.readFile(keyFilename);
-    console.log(file.toString());
     const [files] = await bit_wiki_bucket.getFiles();
     const fileNames = map(files, (file:File)=>file.name)
     return fileNames;
