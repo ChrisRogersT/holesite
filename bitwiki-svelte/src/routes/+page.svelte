@@ -3,48 +3,40 @@
     import BitDetail from "$lib/bit/BitDetail.svelte";
     import Card from "$lib/layout/Card.svelte";
     import { onMount } from "svelte";
-    let isFilesLoading = true;
-    let errorMessage = '';
-    let files: string[] = []; //TODO the promise pattern would simplify this but I think you are supposed to run network requests in on mount so not certain how to simplify that
+    let files: string[] = [];
 
     let selectedFile = '';
 
-    const getBitList = async ()=>{
-        try {
-            const res = await fetch(`/api/bit-storage/all`);
-            const json = await res.json();
-            if(Array.isArray(json)){
-                files = json;
-            } else {
-                throw new Error('response isnt an array')
-            }
-        } catch (e:any){
-            errorMessage = JSON.parse(e);
+    let getBitListPromise: Promise<any> = new Promise(()=>null);
+
+    const getBitListRequest = async ()=>{
+        const res = await fetch(`/api/bit-storage/all`);
+        const json = await res.json();
+        if(Array.isArray(json)){
+            files = json;
+        } else {
+            throw new Error('response isnt an array')
         }
     }
+    
+    const getBitList = ()=>{
+        getBitListPromise = getBitListRequest();
+    }
 
-    onMount(async()=>{
-        try{
-            await getBitList();
-        } finally {
-            isFilesLoading = false;
-        }
-    });
+    onMount(getBitList);
 </script>
     
     <Card>
         <h1>Files</h1>
-        {#if isFilesLoading}
+        {#await getBitListPromise}
             <div>...loading</div>
-        {:else}
-            {#if errorMessage}
-                <div>{errorMessage}</div>
-            {:else}
-                {#each files as file}
-                    <button on:click={()=>selectedFile=file}>{file}</button>
-                {/each}
-            {/if}
-        {/if}
+        {:then}        
+            {#each files as file}
+                <button on:click={()=>selectedFile=file}>{file}</button>
+            {/each}
+        {:catch error}
+            <div>{error.message}</div>
+        {/await}
     </Card>
     {#if selectedFile}
         <Card>
