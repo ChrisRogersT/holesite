@@ -5,8 +5,18 @@
     export let fileName = '';
     let bitPromise: Promise<Bit>;
 
-    const getBitDetails = async (fileName: string) =>{
-        const res = await fetch(`/api/bit-storage/${fileName}`);
+    const getBitDetails = async (bitName: string) =>{
+        const res = await fetch(`/api/bit-storage/${bitName}`);
+        if(!res.ok){
+            const message = await res.text();
+            throw new Error(message);
+        }
+        const json = await res.json();
+        return json;
+    }
+
+    const deleteBit = async(bitName: string) =>{
+        const res = await fetch(`/api/bit-storage/${bitName}`, {method: 'DELETE'});
         if(!res.ok){
             const message = await res.text();
             throw new Error(message);
@@ -25,7 +35,10 @@
     {#await bitPromise}
         <div>...loading</div>
     {:then bit}
-        <div>{bit.markdown}</div>
+        <div>
+            <div>{bit.markdown}</div>
+            <button on:click={()=>deleteBit(fileName)}>Delete</button>
+        </div>
     {:catch error}
         <div>{error.message}</div>
     {/await}
