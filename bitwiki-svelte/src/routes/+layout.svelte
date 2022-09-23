@@ -6,10 +6,12 @@
 <slot></slot>
 
 <svelte:head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
     <style>
         body{
+            font-family: 'Inter';
             margin: 0;
-            background-color:lightgoldenrodyellow;
+            background-color: #fefefe;
         }
     </style>
 </svelte:head>

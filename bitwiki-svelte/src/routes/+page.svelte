@@ -1,11 +1,9 @@
 <script lang='ts'>
-    import AddBitForm from "$lib/bit/AddBitForm.svelte";
-    import BitDetail from "$lib/bit/BitDetail.svelte";
-    import Card from "$lib/layout/Card.svelte";
+    import AddButton from "$lib/components/AddButton.svelte";
     import { onMount } from "svelte";
     let files: string[] = [];
 
-    let selectedFile = '';
+    let filterString: string = '';
 
     let getBitListPromise: Promise<any> = new Promise(()=>null);
 
@@ -25,23 +23,37 @@
 
     onMount(getBitList);
 </script>
-    
-    <Card>
-        <h1>Files</h1>
+
+<div class="main-container">
+    <div>
+        <input placeholder="FILTER BITS..." class="filter-input" bind:value={filterString}/>
+    </div>
+    <div class="bit-grid">
         {#await getBitListPromise}
-            <div>...loading</div>
+        <div>...loading</div>
         {:then}        
-            {#each files as file}
-                <button on:click={()=>selectedFile=file}>{file}</button>
-            {/each}
+        {#each files as file}
+        <button on:click={()=>alert(file)}>{file}</button>
+        {/each}
         {:catch error}
-            <div>{error.message}</div>
+        <div>{error.message}</div>
         {/await}
-    </Card>
-    {#if selectedFile}
-        <Card>
-            <h1>{selectedFile}</h1>
-            <BitDetail fileName={selectedFile}/>
-        </Card>
-    {/if}
-    <AddBitForm mutateFunction={getBitList}/>
+    </div>
+</div>
+    
+<AddButton />
+
+<style>
+    .main-container{
+        display: flex;
+        flex-flow: column nowrap;
+    }
+    .filter-input{
+        color: lightgray;
+        border: none;
+        border-bottom: 2px solid lightgray;
+    }
+    .bit-grid{
+        display: grid;
+    }
+</style>
