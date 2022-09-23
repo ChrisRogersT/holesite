@@ -5,11 +5,11 @@
 <style>
     div{
         position:absolute;
-        bottom: 2rem;
-        right: 2rem;
-        height: 2rem;
-        width: 2rem;
-        border-radius: 2rem;
+        bottom: 3rem;
+        right: 3rem;
+        height: 3rem;
+        width: 3rem;
+        border-radius: 3rem;
         background-color: lightgrey;
     }
 </style>
