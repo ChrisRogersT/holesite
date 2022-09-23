@@ -41,7 +41,3 @@ export const listFiles = async (): Promise<string[]>=>{
 export const uploadBit = async(bitName: string, bitData:Bit)=>{
     await bit_wiki_bucket.file(bitName).save(JSON.stringify(bitData));
 }
-
-export const deleteBit = async(bitName: string)=>{
-    await bit_wiki_bucket.file(bitName).delete();
-}
