@@ -2,6 +2,7 @@
 ## tooling
 *Required*
 - node for running and compiling svelte/svelte-kit
+
 *Optional*
 - nvm for installing and managing node versions
 - make for running make file commands
