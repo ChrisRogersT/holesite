@@ -1,0 +1,31 @@
+{
+  "name": "hole-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "source for the hole bot",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChrisRogersT/holesite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChrisRogersT/holesite/issues"
+  },
+  "homepage": "https://github.com/ChrisRogersT/holesite#readme",
+  "dependencies": {
+    "discord-interactions": "^3.2.0",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "node-fetch": "^3.2.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "type": "module"
+}
