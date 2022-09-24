@@ -1,9 +1,12 @@
 <script lang='ts'>
     import AddButton from "$lib/components/AddButton.svelte";
+	import { filter } from "lodash";
     import { onMount } from "svelte";
     let files: string[] = [];
 
     let filterString: string = '';
+
+    $: filteredFiles = filter(files, (value)=>value.includes(filterString));
 
     let getBitListPromise: Promise<any> = new Promise(()=>null);
 
@@ -24,19 +27,17 @@
     onMount(getBitList);
 </script>
 
-<div class="main-container">
-    <div>
-        <input placeholder="FILTER BITS..." class="filter-input" bind:value={filterString}/>
-    </div>
+<div class="main-page-container">
+    <input placeholder="FILTER BITS..." class="filter-input" bind:value={filterString}/>
     <div class="bit-grid">
         {#await getBitListPromise}
-        <div>...loading</div>
+            <div>...loading</div>
         {:then}        
-        {#each files as file}
-        <button on:click={()=>alert(file)}>{file}</button>
+        {#each filteredFiles as file}
+            <a class="bit-link" href={`/${file}`}>{file}</a>
         {/each}
         {:catch error}
-        <div>{error.message}</div>
+            <div>{error.message}</div>
         {/await}
     </div>
 </div>
@@ -44,16 +45,32 @@
 <AddButton />
 
 <style>
-    .main-container{
+    .main-page-container{
+        margin: 4rem 4rem 0 4rem;
+        
+        flex: 1 1 auto;
+        align-self: stretch;
+
         display: flex;
         flex-flow: column nowrap;
+        align-items: stretch;
     }
     .filter-input{
+        flex: 0 0 auto;
         color: lightgray;
         border: none;
         border-bottom: 2px solid lightgray;
+        margin-bottom: 2rem;
     }
     .bit-grid{
+        flex: 1 1 auto;
         display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        align-items: start;
+    }
+    .bit-link{
+        text-decoration: none;
+        color: black;
     }
 </style>

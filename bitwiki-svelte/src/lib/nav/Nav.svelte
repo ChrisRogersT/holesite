@@ -1,8 +1,12 @@
-<div>
+<div class="nav-container">
     <a href="/" class="hometitle">BIT WIKI</a>
 </div>
 
 <style>
+    .nav-container{
+        flex: 0 0 min-content;
+        align-self: flex-start;
+    }
     a {
         font-size: 3rem;
         font-weight: 800;
