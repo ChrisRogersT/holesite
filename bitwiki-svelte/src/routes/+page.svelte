@@ -46,7 +46,7 @@
 
 <style>
     .main-page-container{
-        margin: 4rem 4rem 0 4rem;
+        margin: 1rem 12rem 0 12rem;
         
         flex: 1 1 auto;
         align-self: stretch;
@@ -56,11 +56,12 @@
         align-items: stretch;
     }
     .filter-input{
+        font-size: 1.5rem;
         flex: 0 0 auto;
         color: lightgray;
         border: none;
         border-bottom: 2px solid lightgray;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
     }
     .bit-grid{
         flex: 1 1 auto;
@@ -70,6 +71,7 @@
         align-items: start;
     }
     .bit-link{
+        font-size: 1.5rem;
         text-decoration: none;
         color: black;
     }

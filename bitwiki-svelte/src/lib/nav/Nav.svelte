@@ -9,7 +9,7 @@
     }
     a {
         font-size: 3rem;
-        font-weight: 800;
+        font-weight: 600;
         text-decoration: none;
         text-transform: capitalize;
         width: min-content;
