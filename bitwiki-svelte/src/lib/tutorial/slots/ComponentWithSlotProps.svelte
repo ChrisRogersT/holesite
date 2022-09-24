@@ -1,5 +1,5 @@
-<script lang='ts'>
-	let hovering: boolean=false;
+<script lang="ts">
+	let hovering: boolean = false;
 
 	function enter() {
 		hovering = true;
@@ -11,5 +11,5 @@
 </script>
 
 <div on:mouseenter={enter} on:mouseleave={leave}>
-	<slot hovering={hovering}></slot>
+	<slot {hovering} />
 </div>

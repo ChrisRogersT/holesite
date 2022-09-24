@@ -1,5 +1,5 @@
-<script lang='ts'>
-    export let value: string;
+<script lang="ts">
+	export let value: string;
 </script>
 
-<input bind:value>
+<input bind:value />

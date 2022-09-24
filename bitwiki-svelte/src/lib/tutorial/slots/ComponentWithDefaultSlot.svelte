@@ -1,12 +1,10 @@
 <div>
-    <slot>
-        Component has no children!
-    </slot>
+	<slot>Component has no children!</slot>
 </div>
 
 <style>
-    div {
-        background-color: lightseagreen;
-        border-radius: 3px;
-    }
+	div {
+		background-color: lightseagreen;
+		border-radius: 3px;
+	}
 </style>
