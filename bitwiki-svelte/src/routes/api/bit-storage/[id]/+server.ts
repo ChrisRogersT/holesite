@@ -8,7 +8,7 @@ export const GET:RequestHandler = async ({params: {id}})=>{
     }
     const data = await getObject(id);
 
-    return new Response(data);
+    return new Response(JSON.stringify({markdown:data.markdown}));
 }
 
 export const PUT:RequestHandler = async({params: {id}, clientAddress, request: {body}})=>{
@@ -16,6 +16,7 @@ export const PUT:RequestHandler = async({params: {id}, clientAddress, request: {
     const parsedBody = await toObject(body);
     const bitName = id;
     const bitData = {
+        author: parsedBody.author,
         markdown: parsedBody.markdown,
         metadata: {
             sourceIP: clientAddress,

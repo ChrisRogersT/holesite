@@ -21,14 +21,14 @@ export const streamToString = (stream: any):Promise<string>=>{
       })
 }
 
-export const getObject = async (id: string)=>{
+export const getObject = async (id: string): Promise<Bit>=>{
     const file = bit_wiki_bucket
         .file(id)
         .createReadStream();
 
     const data = await streamToString(file);
 
-    return data
+    return JSON.parse(data);
 }
 
 export const listFiles = async (): Promise<string[]>=>{
